@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://dhptvycu3kb8x"]
+
+[ext_resource type="Script" path="res://scripts/proc_gen_world.gd" id="1_8bc5o"]
+[ext_resource type="Texture2D" uid="uid://d10k0hm4mo4mi" path="res://sprites/tilemap.png" id="2_pj0sg"]
+[ext_resource type="PackedScene" uid="uid://c016awfj7iviw" path="res://scenes/castle.tscn" id="3_cyrfq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ti7tk"]
+frequency = 0.008
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i0tjk"]
+noise = SubResource("FastNoiseLite_ti7tk")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h77jc"]
+frequency = 0.0683
+fractal_octaves = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rdpdf"]
+noise = SubResource("FastNoiseLite_h77jc")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q7soq"]
+texture = ExtResource("2_pj0sg")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pgitk"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_q7soq")
+
+[node name="proc_gen_world" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_8bc5o")
+land_noise_texture = SubResource("NoiseTexture2D_i0tjk")
+tree_noise_texture = SubResource("NoiseTexture2D_rdpdf")
+max_trees = 1
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_pgitk")
+format = 2
+
+[node name="Castle" parent="." instance=ExtResource("3_cyrfq")]

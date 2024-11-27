@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://c016awfj7iviw"]
+
+[ext_resource type="Texture2D" uid="uid://dldv2fs0up04q" path="res://sprites/castle.png" id="1_fuu71"]
+[ext_resource type="Script" path="res://scripts/castle.gd" id="1_kp7kr"]
+
+[node name="Castle" type="Node2D"]
+script = ExtResource("1_kp7kr")
+
+[node name="Castle" type="Sprite2D" parent="."]
+position = Vector2(32, 32)
+texture = ExtResource("1_fuu71")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(33, 35)
+enabled = false

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cajmw8baejasp"]
+
+[ext_resource type="Texture2D" uid="uid://b6qspq14i36f3" path="res://sprites/tree.png" id="1_btwkl"]
+
+[node name="Tree" type="Node2D"]
+
+[node name="Tree" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(5, 5)
+texture = ExtResource("1_btwkl")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(5, 5)
+zoom = Vector2(0.5, 0.5)
