@@ -1,0 +1,8 @@
+res://scenes/gen_world.tscn
+res://scenes/castle.tscn
+res://scenes/tree.tscn
+res://scripts/proc_gen_world.gd
+res://scripts/castle.gd
+res://scenes/villager.tscn
+res://scenes/tree.gd
+res://scripts/villager.gd

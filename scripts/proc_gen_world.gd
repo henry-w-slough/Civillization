@@ -1,41 +1,46 @@
 extends Node2D
 
+#misc
+var rng = RandomNumberGenerator.new()
 @onready var tile_map = $TileMap
 
-@export var land_noise_texture : NoiseTexture2D
-@export var tree_noise_texture : NoiseTexture2D
-
-@export var max_trees = 100
-var tree_prefab = preload("res://scenes/tree.tscn")
-
-var rng = RandomNumberGenerator.new()
 
 
-var width : int = 300
-var height : int =  300
+#display for gen
+var width : int = 100
+var height : int =  100
+
 
 
 #TERRAIN GENERATION
+@export var land_noise_texture : NoiseTexture2D
+@export var tree_noise_texture : NoiseTexture2D
+
 var land_noise : Noise
 var tree_noise : Noise
 
 var all_land = []
 var all_trees = []
 
+
+
+#atlas for textures
 var land_atlas = Vector2i(0, 0)
 var water_atlas = Vector2i(2, 0)
 var tree_atlas = Vector2i(1, 0)
 
+
+
+#castle
+var castle_coordinates
 var castle_atlas = Vector2i(0, 1)
 
-var hover_land_atlas = Vector2i(0, 1)
-var hover_water_atlas = Vector2i(2, 1)
-var hover_tree_atlas = Vector2i(2, 1)
 
 
+#trees
+var tree_prefab = preload("res://scenes/tree.tscn")
 
 
-var castle_coordinates
 
 
 
@@ -53,14 +58,6 @@ func _ready():
 	
 	#setting castle location
 	castle_coordinates = all_land.pick_random()
-	
-	for tree in range(max_trees):
-		create(tree_prefab, all_trees.pick_random())
-		
-		
-		
-		
-	
 	
 	
 
@@ -90,15 +87,17 @@ func generate_world():
 				if tree_noise_val > 0.1:
 					tile_map.set_cell(0, Vector2i(x, y), 0, tree_atlas, 0)
 					all_trees.append(Vector2i(x*64, y*64))
+					create(tree_prefab, Vector2i(x*64, y*64))
 				else:
 					all_land.append(Vector2i(x*64, y*64))
 					
 					
-				
-				
-				
-				
-				
+	all_trees.sort()
+
+
+
+
+
 func create(prefab, pos):
 	var instance = prefab.instantiate()
 	instance.global_position = pos

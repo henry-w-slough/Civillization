@@ -11,5 +11,3 @@ position = Vector2(32, 32)
 texture = ExtResource("1_fuu71")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(33, 35)
-enabled = false
