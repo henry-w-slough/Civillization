@@ -87,12 +87,12 @@ func generate_world():
 				if tree_noise_val > 0.1:
 					tile_map.set_cell(0, Vector2i(x, y), 0, tree_atlas, 0)
 					all_trees.append(Vector2i(x*64, y*64))
+					
 					create(tree_prefab, Vector2i(x*64, y*64))
 				else:
 					all_land.append(Vector2i(x*64, y*64))
 					
-					
-	all_trees.sort()
+
 
 
 

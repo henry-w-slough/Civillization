@@ -1,10 +1,31 @@
-[gd_scene load_steps=2 format=3 uid="uid://cajmw8baejasp"]
+[gd_scene load_steps=4 format=3 uid="uid://cajmw8baejasp"]
 
-[ext_resource type="Texture2D" uid="uid://b6qspq14i36f3" path="res://sprites/tree.png" id="1_btwkl"]
+[ext_resource type="Texture2D" uid="uid://c8o2xod8ubd38" path="res://sprites/tree2.png" id="1_2inpt"]
+[ext_resource type="Texture2D" uid="uid://beb7mxv3byija" path="res://sprites/tree1.png" id="2_g41jj"]
 
-[node name="Tree" type="Node2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_iv7ys"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2inpt")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g41jj")
+}],
+"loop": true,
+"name": &"not_hovered",
+"speed": 5.0
+}]
 
-[node name="Tree" type="Sprite2D" parent="."]
-position = Vector2(32, -20)
+[node name="Tree" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(36, 44)
 scale = Vector2(4, 4)
-texture = ExtResource("1_btwkl")
+sprite_frames = SubResource("SpriteFrames_iv7ys")
+animation = &"not_hovered"

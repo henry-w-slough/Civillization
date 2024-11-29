@@ -33,16 +33,6 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("temp_wood"):
 		current_task = "wood"
 		
-		#HENRY YOUR FINDING A WAY TO GET NEAREST TREE CHOPPED OR FIND DIFFERENT WAY IDGAF FAGGOT FIGURE
-		#IT OUT ITS 1AM GO TO BED IM SO TIRED PLEASE HELP
-		
-		
-		
-		
-		
-		
-	  
-		
 		
 		
 	move_and_slide()
