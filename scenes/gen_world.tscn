@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhptvycu3kb8x"]
+[gd_scene load_steps=13 format=3 uid="uid://dhptvycu3kb8x"]
 
 [ext_resource type="Script" path="res://scripts/proc_gen_world.gd" id="1_8bc5o"]
-[ext_resource type="Texture2D" uid="uid://d10k0hm4mo4mi" path="res://sprites/tilemap.png" id="2_pj0sg"]
 [ext_resource type="PackedScene" uid="uid://c016awfj7iviw" path="res://scenes/castle.tscn" id="3_cyrfq"]
+[ext_resource type="Texture2D" uid="uid://deomsdi0oikdw" path="res://sprites/tilemap.png 23-22-34-861.png" id="3_kpa8r"]
 [ext_resource type="PackedScene" uid="uid://c62qwijfyp6lx" path="res://scenes/villager.tscn" id="4_8jxva"]
 [ext_resource type="Script" path="res://scripts/mouse.gd" id="5_iyw7e"]
 
@@ -28,34 +28,17 @@ noise = SubResource("FastNoiseLite_h77jc")
 [sub_resource type="CircleShape2D" id="CircleShape2D_3vv5x"]
 radius = 4.0
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_eu3la"]
-vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-agent_radius = 0.0
-
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_3ujl1"]
-vertices = PackedVector2Array(32, 32, -32, 32, -32, -32, 32, -32)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)])
-source_geometry_group_name = &"navigation_polygon_source_group"
-agent_radius = 0.0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q7soq"]
-texture = ExtResource("2_pj0sg")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jut6t"]
+texture = ExtResource("3_kpa8r")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_eu3la")
 1:0/0 = 0
-1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_3ujl1")
 2:0/0 = 0
 0:1/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_pgitk"]
+[sub_resource type="TileSet" id="TileSet_vofth"]
 tile_size = Vector2i(64, 64)
-navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_q7soq")
+sources/0 = SubResource("TileSetAtlasSource_jut6t")
 
 [node name="proc_gen_world" type="Node2D"]
 y_sort_enabled = true
@@ -70,7 +53,7 @@ script = ExtResource("5_iyw7e")
 shape = SubResource("CircleShape2D_3vv5x")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_pgitk")
+tile_set = SubResource("TileSet_vofth")
 format = 2
 
 [node name="Castle" parent="." instance=ExtResource("3_cyrfq")]

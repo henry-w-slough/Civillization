@@ -26,6 +26,7 @@ var all_trees = []
 
 #atlas for textures
 var land_atlas = Vector2i(0, 0)
+var edge_land_atlas = Vector2i(0, 1)
 var water_atlas = Vector2i(2, 0)
 var tree_atlas = Vector2i(1, 0)
 
@@ -70,6 +71,8 @@ func generate_world():
 	#every pixel in the specified width and height
 	for x in range(width):
 		for y in range(height):
+			x = x*64
+			y = y*64
 			
 			land_noise_val = land_noise.get_noise_2d(x, y)
 			tree_noise_val = tree_noise.get_noise_2d(x, y)
@@ -81,17 +84,31 @@ func generate_world():
 
 			#setting specific noise values to land
 			if land_noise_val > 0.1:
-				tile_map.set_cell(0, Vector2i(x, y), 0, land_atlas, 0)
-				
+			
 				#specifying trees with tree noise
 				if tree_noise_val > 0.1:
 					tile_map.set_cell(0, Vector2i(x, y), 0, tree_atlas, 0)
-					all_trees.append(Vector2i(x*64, y*64))
+					all_trees.append(Vector2i(x, y))
 					
-					create(tree_prefab, Vector2i(x*64, y*64))
+					create(tree_prefab, Vector2i(x, y))
 				else:
-					all_land.append(Vector2i(x*64, y*64))
+					tile_map.set_cell(0, Vector2i(x, y), 0, land_atlas, 0)
+					all_land.append(Vector2i(x, y))
 					
+					
+	for x in range(width):
+		for y in range(height):
+			var vec = Vector2i(x, y)
+				
+			if tile_map.get_cell_atlas_coords(0, vec - Vector2i(64, 64)) == water_atlas:
+				tile_map.set_cell(0, Vector2i(x, y), 0, edge_land_atlas, 0)
+				
+				
+				
+						
+			x = x/64
+			y = y/64
+			
 
 
 

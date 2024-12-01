@@ -25,7 +25,7 @@ animations = [{
 [node name="Tree" type="Area2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(36, 44)
+position = Vector2(36, 0)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_iv7ys")
 animation = &"not_hovered"
