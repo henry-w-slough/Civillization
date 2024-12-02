@@ -2,4 +2,6 @@ res://scenes/gen_world.tscn
 res://scenes/castle.tscn
 res://scenes/villager.tscn
 res://scenes/tree.tscn
-res://scripts/proc_gen_world.gd
+res://scripts/mouse.gd
+res://scenes/mouse.tscn
+res://scripts/villager.gd

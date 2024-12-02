@@ -27,11 +27,6 @@ func _ready():
 	
 func _physics_process(delta):
 	move_to_nav_pos(delta)
-	
-	if Input.is_action_just_pressed("temp_idle"):
-		current_task = "idle"
-	if Input.is_action_just_pressed("temp_wood"):
-		current_task = "wood"
 		
 		
 		
