@@ -20,8 +20,6 @@ func _process(_delta):
 	if Input.is_action_just_pressed("Select"):               
 		selected_tile = get_atlas(tile_map.local_to_map(global_position))
 		
-		global_position = tile_map.map_to_local(global_position)
-		
 		
 		
 		
