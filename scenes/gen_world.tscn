@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/proc_gen_world.gd" id="1_8bc5o"]
 [ext_resource type="PackedScene" uid="uid://mp45mpvlext0" path="res://scenes/mouse.tscn" id="2_li7n1"]
 [ext_resource type="PackedScene" uid="uid://c016awfj7iviw" path="res://scenes/castle.tscn" id="3_cyrfq"]
-[ext_resource type="Texture2D" uid="uid://deomsdi0oikdw" path="res://sprites/tilemap.png 23-22-34-861.png" id="3_kpa8r"]
+[ext_resource type="Texture2D" uid="uid://dytxuolmgblts" path="res://sprites/tilemap.png" id="3_pdyam"]
 [ext_resource type="PackedScene" uid="uid://c62qwijfyp6lx" path="res://scenes/villager.tscn" id="4_8jxva"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ti7tk"]
@@ -25,17 +25,16 @@ width = 100
 height = 100
 noise = SubResource("FastNoiseLite_h77jc")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jut6t"]
-texture = ExtResource("3_kpa8r")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dbphm"]
+texture = ExtResource("3_pdyam")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
-0:1/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_vofth"]
+[sub_resource type="TileSet" id="TileSet_no6r4"]
 tile_size = Vector2i(64, 64)
-sources/0 = SubResource("TileSetAtlasSource_jut6t")
+sources/0 = SubResource("TileSetAtlasSource_dbphm")
 
 [node name="proc_gen_world" type="Node2D"]
 y_sort_enabled = true
@@ -46,7 +45,7 @@ tree_noise_texture = SubResource("NoiseTexture2D_rdpdf")
 [node name="Mouse" parent="." instance=ExtResource("2_li7n1")]
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_vofth")
+tile_set = SubResource("TileSet_no6r4")
 format = 2
 
 [node name="Castle" parent="." instance=ExtResource("3_cyrfq")]

@@ -11,7 +11,7 @@ extends Node2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	camera_movement(50, 0.2)
+	camera_movement(20, 0.2)
 	
 	global_position = get_parent().castle_coordinates
 	

@@ -26,7 +26,7 @@ animations = [{
 size = Vector2(36, 64)
 
 [node name="Tree" type="Area2D"]
-position = Vector2(-11, 0)
+visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(36, 0)
