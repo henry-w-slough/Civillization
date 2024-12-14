@@ -1,15 +1,16 @@
 extends CharacterBody2D
 
-
+@onready var tile_map = get_parent().get_node("TileMap")
 #navigation variables
 @onready var nav = $NavigationAgent2D
 var speed = 300
 var accel = 20
 var direction
 
-var current_task = "idle"
+#tasks (including mouse vars)
+@onready var mouse = get_parent().get_node("Mouse")
 
-var array = [9, 2, 5, 1]
+var current_task = "idle"
 
 
 
@@ -26,11 +27,20 @@ func _ready():
 	
 	
 func _physics_process(delta):
-	move_to_nav_pos(delta)
+	nav.target_position = get_global_mouse_position()
+	if get_atlas(mouse.selected_tile) == Vector2i(1, 0) and nav.is_target_reached():
+		current_task = "wood"
 		
 		
+	direction = Vector3()
+	
+	direction = nav.get_next_path_position() - global_position
+	direction = direction.normalized()
+	
+	velocity = velocity.lerp(direction * speed, accel * delta)
 		
 	move_and_slide()
+		
 	
 	
 	
@@ -40,7 +50,7 @@ func wait_init():
 	await get_tree().process_frame
 	set_physics_process(true)
 	
-	global_position = get_parent().castle_coordinates
+
 	
 	
 	
@@ -68,7 +78,9 @@ func move_to_nav_pos(delta):
 	
 	
 	
-
+func get_atlas(tile_coords):
+	if str(tile_coords) != "none":
+		return tile_map.get_cell_atlas_coords( 0, tile_coords )
 		
 		
 		

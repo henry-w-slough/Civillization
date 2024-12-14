@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://dhptvycu3kb8x"]
 
 [ext_resource type="Script" path="res://scripts/proc_gen_world.gd" id="1_8bc5o"]
-[ext_resource type="PackedScene" uid="uid://mp45mpvlext0" path="res://scenes/mouse.tscn" id="2_li7n1"]
 [ext_resource type="PackedScene" uid="uid://c016awfj7iviw" path="res://scenes/castle.tscn" id="3_cyrfq"]
 [ext_resource type="Texture2D" uid="uid://dytxuolmgblts" path="res://sprites/tilemap.png" id="3_pdyam"]
 [ext_resource type="PackedScene" uid="uid://c62qwijfyp6lx" path="res://scenes/villager.tscn" id="4_8jxva"]
+[ext_resource type="Script" path="res://scripts/mouse.gd" id="5_fhnn0"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ti7tk"]
 noise_type = 2
@@ -29,11 +29,20 @@ noise = SubResource("FastNoiseLite_h77jc")
 texture = ExtResource("3_pdyam")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_no6r4"]
 tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_dbphm")
 
 [node name="proc_gen_world" type="Node2D"]
@@ -41,8 +50,6 @@ y_sort_enabled = true
 script = ExtResource("1_8bc5o")
 land_noise_texture = SubResource("NoiseTexture2D_i0tjk")
 tree_noise_texture = SubResource("NoiseTexture2D_rdpdf")
-
-[node name="Mouse" parent="." instance=ExtResource("2_li7n1")]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_no6r4")
@@ -52,3 +59,6 @@ format = 2
 
 [node name="Villager" parent="." instance=ExtResource("4_8jxva")]
 position = Vector2(86, 32)
+
+[node name="Mouse" type="Node2D" parent="."]
+script = ExtResource("5_fhnn0")

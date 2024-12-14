@@ -1,7 +1,7 @@
-extends Area2D
+extends Node2D
 
 #for objects that are selected by mouse
-var selected_tile
+var selected_tile = "none"
 
 var removable_trees = []
 
@@ -13,22 +13,15 @@ var removable_trees = []
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	global_position = get_global_mouse_position()
-	
-	
 	
 	if Input.is_action_just_pressed("Select"):               
-		selected_tile = get_atlas(tile_map.local_to_map(global_position))
+		selected_tile = tile_map.local_to_map(get_global_mouse_position())
 		
 		
 		
 		
 		
-		
-		
-		
-func get_atlas(tile_coords):
-	return tile_map.get_cell_atlas_coords( 0, tile_coords )
+	
 
 	
 	

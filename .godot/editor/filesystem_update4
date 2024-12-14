@@ -1,8 +1,5 @@
+res://scenes/villager.tscn
+res://scripts/villager.gd
 res://scenes/gen_world.tscn
 res://scenes/castle.tscn
-res://scenes/villager.tscn
 res://scenes/tree.tscn
-res://scenes/mouse.tscn
-res://scripts/mouse.gd
-res://scripts/proc_gen_world.gd
-res://scripts/castle.gd
