@@ -16,28 +16,28 @@ class Tile(GameObject.GameObject):
 
 class Grass(Tile):
     def __init__(self, x, y, width, height, *groups):
-        super().__init__(None, x, y, width, height, *groups)
+        super().__init__("", x, y, width, height, *groups)
 
         self.texture.color_fill((57, 89, 54))
 
 
 class Stone(Tile):
     def __init__(self, x, y, width, height, *groups):
-        super().__init__(None, x, y, width, height, *groups)
+        super().__init__("", x, y, width, height, *groups)
 
         self.texture.color_fill((52, 54, 56))
         
 
 class Water(Tile):
     def __init__(self, x, y, width, height, *groups):
-        super().__init__(None, x, y, width, height, *groups)
+        super().__init__("", x, y, width, height, *groups)
        
         self.texture.color_fill((24, 48, 22))
 
 
 class Tree(Tile):
     def __init__(self, x, y, width, height, *groups):
-        super().__init__(None, x, y, width, height, *groups)
+        super().__init__("", x, y, width, height, *groups)
 
         self.texture.color_fill((24, 48, 22))
 

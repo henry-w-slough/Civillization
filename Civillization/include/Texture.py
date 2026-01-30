@@ -3,7 +3,7 @@ import pygame
 class Texture():
     def __init__(self, img_path:str, width:int, height:int):
 
-        if img_path != None:
+        if img_path != "":
             self.texture = pygame.image.load(img_path)
             self.texture = pygame.transform.scale(self.texture, (width, height))
         else:

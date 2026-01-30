@@ -2,12 +2,14 @@ import pygame
 import include.GameObject as GameObject
 import math
 
+pygame.init()
 
 class UIElement(GameObject.GameObject):
     def __init__(self, width:int, height:int, *groups:pygame.sprite.Group):
-        super().__init__(width, height, None, *groups)
+        super().__init__(width, height, "", *groups)
 
-        self.enabled = True
+        self.enabled:bool = True
+        self.color:tuple = (0, 0, 0)
 
     def set_pos(self, x:int, y:int) -> None:
         self.rect.x = x
@@ -15,17 +17,29 @@ class UIElement(GameObject.GameObject):
 
     def set_color(self, color:tuple) -> None:
         self.texture.color_fill(color)
+        self.color = color
 
     def set_enabled(self, enable:bool) -> None:
-        self.enabled = enabled
+        self.enabled = enable
 
-    def add_text(self, text):
-        text_image = pygame.Surface((self.rect.width, self.rect.height))
 
-        font_size = math.isqrt((self.rect.width * self.rect.height) // len(text))
-        font = pygame.font.Font("ByteBounce.ttf", font_size)
-
-        text = font.render(text)
+    def add_text(self, text: str, text_color: tuple) -> None:
+        font_size = min(self.rect.width, self.rect.height) // 2  # Start with a reasonable size
+        font = pygame.font.Font("assets/ByteBounce.ttf", font_size)
+        
+        # Adjust font size until text fits
+        while font_size > 1:
+            text_image = font.render(text, False, text_color, self.color)
+            if text_image.get_width() <= self.rect.width * 0.9 and text_image.get_height() <= self.rect.height * 0.9:
+                break
+            font_size -= 1
+            font = pygame.font.Font("assets/ByteBounce.ttf", font_size)
+        
+        text_image = font.render(text, False, text_color, self.color)
+        # Center the text
+        x = (self.rect.width - text_image.get_width()) // 2
+        y = (self.rect.height - text_image.get_height()) // 2
+        self.image.blit(text_image, (x, y))
    
         
         
