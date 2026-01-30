@@ -20,7 +20,7 @@ generation.generate_map(10, screen.layers["tiles"], Tiles.Stone)
 button = Button.Button(generation.tile_width*10, generation.tile_height*1, screen.layers["ui"])
 button.set_color((255, 255, 255))
 
-button.add_text("Hello, my name is hNeyr", (0, 0, 0))
+button.add_text("Hello", (0, 0, 0))
 
 
 cursor = Cursor.Cursor(generation.tile_width, generation.tile_height, screen.layers["cursor"])
