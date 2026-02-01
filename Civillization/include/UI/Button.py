@@ -1,4 +1,4 @@
-import include.UIElement as UIElement
+import include.UI.UIElement as UIElement
 import pygame
 
 

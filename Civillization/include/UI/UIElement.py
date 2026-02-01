@@ -1,5 +1,5 @@
 import pygame
-import include.GameObject as GameObject
+import include.Engine.GameObject as GameObject
 import math
 
 pygame.init()
@@ -8,7 +8,6 @@ class UIElement(GameObject.GameObject):
     def __init__(self, width:int, height:int, *groups:pygame.sprite.Group):
         super().__init__(width, height, "", *groups)
 
-        self.enabled:bool = True
         self.color:tuple = (0, 0, 0)
 
     def set_pos(self, x:int, y:int) -> None:
@@ -19,12 +18,8 @@ class UIElement(GameObject.GameObject):
         self.texture.color_fill(color)
         self.color = color
 
-    def set_enabled(self, enable:bool) -> None:
-        self.enabled = enable
-
-
     def add_text(self, text: str, text_color: tuple) -> None:
-        font_size = min(self.rect.width, self.rect.height) // 2  # Start with a reasonable size
+        font_size = min(self.rect.width, self.rect.height) // 2
         font = pygame.font.Font("assets/ByteBounce.ttf", font_size)
         
         # Adjust font size until text fits
@@ -34,8 +29,7 @@ class UIElement(GameObject.GameObject):
                 break
             font_size -= 1
             font = pygame.font.Font("assets/ByteBounce.ttf", font_size)
-        
-        text_image = font.render(text, False, text_color, self.color)
+    
         # Center the text
         x = (self.rect.width - text_image.get_width()) // 2
         y = (self.rect.height - text_image.get_height()) // 2

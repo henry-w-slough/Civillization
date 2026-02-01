@@ -1,6 +1,6 @@
 import pygame
-import include.Texture as Texture
-import include.GameObject as GameObject
+import include.Engine.Texture as Texture
+import include.Engine.GameObject as GameObject
 
 class Screen():
 
@@ -17,12 +17,12 @@ class Screen():
         self.layers = {
             "tiles": pygame.sprite.Group(),
             "sprites": pygame.sprite.Group(),
-            "ui": pygame.sprite.Group(),
-            "cursor": pygame.sprite.Group()
+            "ui": pygame.sprite.Group()
         }
 
+        
 
-    def update(self):
+    def update(self) -> None:
 
         self.screen.fill((255, 0, 255))
 

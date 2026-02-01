@@ -1,6 +1,6 @@
 import pygame
-import include.Texture as Texture
-import include.GameObject as GameObject
+import include.Engine.Texture as Texture
+import include.Engine.GameObject as GameObject
 
 
 class Tile(GameObject.GameObject):
@@ -16,30 +16,23 @@ class Tile(GameObject.GameObject):
 
 class Grass(Tile):
     def __init__(self, x, y, width, height, *groups):
-        super().__init__("", x, y, width, height, *groups)
-
-        self.texture.color_fill((57, 89, 54))
+        super().__init__("assets/sprites/grass.png", x, y, width, height, *groups)
 
 
 class Stone(Tile):
     def __init__(self, x, y, width, height, *groups):
-        super().__init__("", x, y, width, height, *groups)
-
-        self.texture.color_fill((52, 54, 56))
+        super().__init__("assets/sprites/stone.png", x, y, width, height, *groups)
         
 
 class Water(Tile):
     def __init__(self, x, y, width, height, *groups):
-        super().__init__("", x, y, width, height, *groups)
-       
-        self.texture.color_fill((24, 48, 22))
-
+        super().__init__("assets/sprites/water.png", x, y, width, height, *groups)
+    
 
 class Tree(Tile):
     def __init__(self, x, y, width, height, *groups):
-        super().__init__("", x, y, width, height, *groups)
+        super().__init__("assets/sprites/tree.png", x, y, width, height, *groups)
 
-        self.texture.color_fill((24, 48, 22))
 
 
 

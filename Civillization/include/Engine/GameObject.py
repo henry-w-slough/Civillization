@@ -1,5 +1,5 @@
 import pygame
-import include.Texture as Texture
+import include.Engine.Texture as Texture
 
 
 
@@ -12,10 +12,10 @@ class GameObject(pygame.sprite.Sprite):
         self.image = self.texture.get_surface()
         self.rect = self.image.get_rect()
 
-    def update(self):
+    def update(self) -> None:
         self.image.blit(self.texture.texture, (0, 0))
 
-    
+
     def scale(self, width, height) -> None:
         self.texture.resize(width, height) 
         self.image = self.texture.get_surface()
