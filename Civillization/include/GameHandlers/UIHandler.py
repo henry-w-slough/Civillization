@@ -25,11 +25,10 @@ class UIHandler():
         self.enable_layer("cursor")
 
         button = Button.Button(screen.width, generation.tile_height * 5, self.layers["resources"])
-        button.set_color((0, 0, 0))
-        button.add_text("This is tab 1.", (255, 255, 255))
-
-    
-
+        button.set_pos(0, screen.height - button.rect.height)
+        button.set_opacity(100)
+        button.add_text("This is transparent text", (255, 255, 255))
+        
 
 
     def update(self):

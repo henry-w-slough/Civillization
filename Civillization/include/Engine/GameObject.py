@@ -9,7 +9,10 @@ class GameObject(pygame.sprite.Sprite):
         super().__init__(*groups)
 
         self.texture = Texture.Texture(img_path, width, height)
-        self.image = self.texture.get_surface()
+
+        self.image = pygame.Surface(self.texture.texture.get_size(), pygame.SRCALPHA)
+        self.image.blit(self.texture.texture, (0, 0))
+
         self.rect = self.image.get_rect()
 
     def update(self) -> None:
@@ -18,7 +21,7 @@ class GameObject(pygame.sprite.Sprite):
 
     def scale(self, width, height) -> None:
         self.texture.resize(width, height) 
-        self.image = self.texture.get_surface()
+        self.image = self.texture.texture
         self.rect = self.image.get_rect()
 
 

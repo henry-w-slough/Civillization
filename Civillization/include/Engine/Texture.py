@@ -7,14 +7,12 @@ class Texture():
             self.texture = pygame.image.load(img_path)
             self.texture = pygame.transform.scale(self.texture, (width, height))
         else:
-            self.texture = pygame.Surface((width, height))
-        
+            self.texture = pygame.Surface((width, height), pygame.SRCALPHA)
+
+        self.texture.convert_alpha()
+
         self.width = width
         self.height = height
-
-      
-    def get_surface(self) -> pygame.Surface:
-        return self.texture
     
 
     def resize(self, width:int, height:int) -> None:
