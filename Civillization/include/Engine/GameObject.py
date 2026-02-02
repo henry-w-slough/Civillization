@@ -9,25 +9,27 @@ class GameObject(pygame.sprite.Sprite):
         super().__init__(*groups)
 
         self.texture = Texture.Texture(img_path, width, height)
-
-        self.image = pygame.Surface(self.texture.texture.get_size(), pygame.SRCALPHA)
-        self.image.blit(self.texture.texture, (0, 0))
-
+        self.image = self.texture.set_texture_size(width, height)
         self.rect = self.image.get_rect()
 
-    def update(self) -> None:
-        self.image.blit(self.texture.texture, (0, 0))
+        self.color:tuple = (0, 0, 0)
+        self.alpha = 255
 
-
-    def scale(self, width, height) -> None:
-        self.texture.resize(width, height) 
-        self.image = self.texture.texture
+    def set_size(self, width:int, height:int):
+        #resize sets the texture's size and returns the surface
+        self.image = self.texture.set_texture_size(width, height)
         self.rect = self.image.get_rect()
 
+    def set_pos(self, x:int, y:int):
+        self.rect.x = x
+        self.rect.y = y
 
-    def translate(self, x:int, y:int) -> None:
-        self.rect.x += x
-        self.rect.y += y
+    def set_background(self, color:tuple, alpha:int=255):
+        self.image = self.texture.set_texture_background(color, alpha)
+        self.alpha = alpha
+        self.color = color
+
+        
 
 
 

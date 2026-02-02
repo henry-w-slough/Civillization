@@ -13,8 +13,6 @@ class Button(UIElement.UIElement):
             if cursor.rect.bottom >= self.rect.top and cursor.rect.top <= self.rect.bottom:
                 return True
         return False
-    
-
 
 
         

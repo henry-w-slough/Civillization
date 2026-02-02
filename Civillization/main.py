@@ -6,11 +6,11 @@ import include.GameHandlers.UIHandler as UIHandler
 
 screen = Screen.Screen(800, 800)
 
-generation = Generation.Generation(screen.width, screen.height, 16)
+generation = Generation.Generation(screen.width, screen.height, 32)
 
-generation.generate_map(2, screen.layers["tiles"], Tiles.Grass)
-generation.generate_map(5, screen.layers["tiles"], Tiles.Tree)
-generation.generate_map(10, screen.layers["tiles"], Tiles.Stone)
+generation.generate_map(1, screen.layers["tiles"], Tiles.Grass)
+generation.generate_map(4, screen.layers["tiles"], Tiles.Tree)
+generation.generate_map(20, screen.layers["tiles"], Tiles.Stone)
 
 ui_handler = UIHandler.UIHandler(screen)
 ui_handler.start(generation, screen)
