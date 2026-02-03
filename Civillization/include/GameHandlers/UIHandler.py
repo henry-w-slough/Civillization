@@ -33,19 +33,20 @@ class UIHandler():
         self.enable_layer("cursor")
 
         self.ui_label = UIElement.UIElement(screen.width, screen.height//4, self.layers["menus"])
-        self.ui_label.set_background((100, 100, 100), 230)
+        self.ui_label.set_color((100, 100, 100), 230)
         self.ui_label.set_text("This is the assets tab.", (255, 255, 255))
         self.ui_label.set_pos(0, screen.height-self.ui_label.rect.height)
+        self.ui_label.set_image("assets/sprites/ui.png")
 
-        self.asset_tab = Button.Button(screen.width//8, screen.height//8, self.layers["menus"])
-        self.asset_tab.set_background((255, 100, 100), 230)
+        self.asset_tab = Button.Button(screen.width//7, screen.height//10, self.layers["menus"])
+        self.asset_tab.set_color((100, 255, 255), 230)
         self.asset_tab.set_text("Assets", (255, 255, 255))
-        self.asset_tab.set_pos(0, self.ui_label.rect.y-self.asset_tab.rect.height)
+        self.asset_tab.set_pos(64, self.ui_label.rect.y-self.asset_tab.rect.height)
 
-        self.stats_tab = Button.Button(screen.width//8, screen.height//8, self.layers["menus"])
-        self.stats_tab.set_background((100, 255, 100), 230)
+        self.stats_tab = Button.Button(screen.width//7, screen.height//10, self.layers["menus"])
+        self.stats_tab.set_color((100, 255, 100), 230)
         self.stats_tab.set_text("Stats", (255, 255, 255))
-        self.stats_tab.set_pos(self.asset_tab.rect.x+self.stats_tab.rect.width, self.ui_label.rect.y-self.asset_tab.rect.height)
+        self.stats_tab.set_pos(self.asset_tab.rect.x+self.stats_tab.rect.width+64, self.ui_label.rect.y-self.asset_tab.rect.height)
 
     def update(self):
         keys = pygame.key.get_pressed()
@@ -59,6 +60,8 @@ class UIHandler():
             if buttons[0]:
                 if self.asset_tab.is_hover(self.cursor):
                     self.ui_label.set_text("This is the assets tab.", (255, 255, 255))
+                if self.stats_tab.is_hover(self.cursor):
+                    self.ui_label.set_text("This is the stats tab.", (255, 255, 255))
 
 
         self.prev_buttons = buttons
