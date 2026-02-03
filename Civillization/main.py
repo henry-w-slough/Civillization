@@ -3,10 +3,11 @@ import include.Engine.Screen as Screen
 import include.Engine.Generation as Generation
 import include.GameObjects.Tiles as Tiles
 import include.GameHandlers.UIHandler as UIHandler
+import sys
 
 screen = Screen.Screen(800, 800)
 
-generation = Generation.Generation(screen.width, screen.height, 32)
+generation = Generation.Generation(screen.width, screen.height, 48)
 
 generation.generate_map(1, screen.layers["tiles"], Tiles.Grass)
 generation.generate_map(4, screen.layers["tiles"], Tiles.Tree)
@@ -24,6 +25,10 @@ while running:
 
     ui_handler.update()
     screen.update()
+
+
+pygame.quit()
+sys.exit()
     
 
 

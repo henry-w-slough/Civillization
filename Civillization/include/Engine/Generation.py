@@ -12,9 +12,8 @@ class Generation():
 
         self.tiles = tiles
 
-        #this is for refs outside of Generation that require integer division
-        self.tile_width = self.width // tiles
-        self.tile_height = self.height // tiles
+        self.tile_width = self.width / tiles
+        self.tile_height = self.height / tiles
 
     def generate_map(self, chance:int, map_group:pygame.sprite.Group, Tile):
         for x in range(self.tiles):

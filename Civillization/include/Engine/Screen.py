@@ -21,10 +21,9 @@ class Screen():
         }
 
         
-
     def update(self) -> None:
 
-        self.screen.fill((255, 0, 255))
+        self.screen.fill((0, 0, 0))
 
         for l in self.layers.values():
             l.update()

@@ -36,7 +36,6 @@ class UIHandler():
         self.ui_label.set_color((100, 100, 100), 230)
         self.ui_label.set_text("This is the assets tab.", (255, 255, 255))
         self.ui_label.set_pos(0, screen.height-self.ui_label.rect.height)
-        self.ui_label.set_image("assets/sprites/ui.png")
 
         self.asset_tab = Button.Button(screen.width//7, screen.height//10, self.layers["menus"])
         self.asset_tab.set_color((100, 255, 255), 230)
