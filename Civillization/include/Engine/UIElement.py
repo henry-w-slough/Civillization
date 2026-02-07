@@ -5,9 +5,11 @@ pygame.init()
 
 class UIElement(GameObject.GameObject):
     def __init__(self, width:int, height:int, *groups:pygame.sprite.Group):
-        super().__init__(width, height, "", *groups)
+        super().__init__(width, height, "assets/sprites/ui.png", *groups)
 
-    def set_text(self, text: str, text_color: tuple) -> None:
+        self.text_color = ()
+
+    def set_text(self, text:str, text_color:tuple=(255, 255, 255)) -> None:
 
         #temp surface to act as self.image placeholder
         temp = self.texture.set_texture(self.texture.img_path)
