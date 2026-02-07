@@ -17,7 +17,8 @@ class Screen():
         self.layers = {
             "tiles": pygame.sprite.Group(),
             "sprites": pygame.sprite.Group(),
-            "ui": pygame.sprite.Group()
+            "ui": pygame.sprite.Group(),
+            "cursor": pygame.sprite.Group()
         }
 
         

@@ -28,7 +28,7 @@ class UIElement(GameObject.GameObject):
         #centering text
         x = (self.rect.width - text_image.get_width()) // 2
         y = (self.rect.height - text_image.get_height()) // 2
-
+        
         temp.blit(text_image, (x, y))
         self.image = temp
    

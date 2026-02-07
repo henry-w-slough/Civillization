@@ -4,6 +4,7 @@ import include.Engine.Generation as Generation
 import include.GameObjects.Tiles as Tiles
 import include.GameHandlers.UIHandler as UIHandler
 import include.GameHandlers.Game as Game
+import include.UI.Cursor as Cursor
 import sys
 
 screen = Screen.Screen(800, 800)
@@ -16,8 +17,9 @@ generation.generate_map(1, screen.layers["tiles"], Tiles.Grass)
 generation.generate_map(4, screen.layers["tiles"], Tiles.Tree)
 generation.generate_map(20, screen.layers["tiles"], Tiles.Stone)
 
-ui_handler = UIHandler.UIHandler(screen, game)
-ui_handler.start(generation, screen)
+cursor = Cursor.Cursor(generation.width//generation.tiles, generation.height//generation.tiles, screen, screen.layers["cursor"])
+
+ui_handler = UIHandler.UIHandler(screen, game, cursor)
 
 running = True
 while running:
