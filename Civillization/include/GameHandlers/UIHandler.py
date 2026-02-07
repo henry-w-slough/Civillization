@@ -5,15 +5,18 @@ import include.UI.Button as Button
 import include.UI.Cursor as Cursor
 import include.Engine.UIElement as UIElement
 import include.GameHandlers.Game as Game
+import random
 
-
+clock = pygame.time.Clock()
 
 class UIHandler():
     def __init__(self, screen:Screen.Screen, game:Game.Game, cursor:Cursor.Cursor):
         
         self.layers = {
             "background": pygame.sprite.Group(),
-            "enabled": pygame.sprite.Group()
+            "enabled": pygame.sprite.Group(),
+            "assets": pygame.sprite.Group(),
+            "stats": pygame.sprite.Group()
         }
 
         self.screen = screen
@@ -39,25 +42,13 @@ class UIHandler():
         self.stats_tab.set_pos(self.asset_tab.rect.x+self.stats_tab.rect.width, self.asset_tab.rect.y)
         self.stats_tab.set_text("Stats")
 
+        self.fps_label = UIElement.UIElement(32, 32, self.layers["enabled"])
+        self.fps_label.set_text(str(round(clock.get_fps(), 2)))
+
     def update(self):
         keys = pygame.key.get_pressed()
         buttons = pygame.mouse.get_pressed()
-
-        if keys[pygame.K_e] and keys != self.prev_keys:
-            self.ui_enabled = not self.ui_enabled
-
-        if buttons[0]:
-            if self.asset_tab.is_hover(self.cursor):
-                self.enabled_layer = self.layers["enabled"]
-            if self.stats_tab.is_hover(self.cursor):
-                self.enabled_layer = self.layers["enabled"]
-
-        if self.ui_enabled:
-            self.enable_layer(self.layers["enabled"])
-        else:
-            self.disable_layer(self.layers["enabled"])
     
-
         self.prev_keys = keys
 
 

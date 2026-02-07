@@ -28,8 +28,9 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    ui_handler.update()
+    game.update()
     screen.update()
+    ui_handler.update()
 
 
 pygame.quit()
