@@ -10,9 +10,6 @@ class UIElement(GameObject.GameObject):
         self.text_color = (255, 255, 255)
         self.text = ""
 
-    def update(self):
-        self.update_text()
-
     def set_text(self, text:str, text_color:tuple=(255, 255, 255)) -> None:
         self.text = text
         self.text_color = text_color

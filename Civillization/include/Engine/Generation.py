@@ -1,5 +1,5 @@
 import pygame
-import include.GameObjects.Tiles as Tiles
+import include.Objects.Tiles as Tiles
 import random
 
 
